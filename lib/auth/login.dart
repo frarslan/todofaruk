@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todofaruk/auth/auth_service.dart';
+
+import 'auth_service.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -18,19 +19,19 @@ class Login extends StatelessWidget {
           TextField(
             onChanged: (value) => name = value,
           ),
-          TextField(
-            onChanged: (value) => pass = value,
-          ),
+          TextField(onChanged: (value) => pass = name),
           Row(
             children: [
-              TextButton(
+              ElevatedButton(
                   onPressed: () {
                     authService.login();
                   },
-                  child: const Text('Login')),
-              TextButton(onPressed: () {}, child: const Text('Register')),
+                  child: Text("Login")),
+              ElevatedButton(onPressed: () {}, child: Text("Register"))
             ],
-          )
+          ),
+          TextButton(
+              onPressed: () {}, child: Text("Forget password? Click Here."))
         ],
       ),
     );

@@ -1,3 +1,8 @@
+// To parse this JSON data, do
+//
+//     final login = loginFromJson(jsonString);
+
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Login loginFromJson(dynamic str) => Login.fromJson(str);
