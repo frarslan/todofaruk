@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-Login loginFromJson(dynamic str) => Login.fromJson(str);
+LoginModel loginFromJson(dynamic str) => LoginModel.fromJson(str);
 
-String loginToJson(Login data) => json.encode(data.toJson());
+String loginToJson(LoginModel data) => json.encode(data.toJson());
 
-class Login {
-  Login({
+class LoginModel {
+  LoginModel({
     required this.user,
     required this.token,
   });
@@ -13,7 +13,7 @@ class Login {
   final User user;
   final String token;
 
-  factory Login.fromJson(Map<String, dynamic> json) => Login(
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         user: User.fromJson(json["user"]),
         token: json["token"],
       );
@@ -62,4 +62,36 @@ class User {
         "updatedAt": updatedAt,
         "__v": v,
       };
+}
+
+class RegisterUser {
+  RegisterUser(
+      {required this.name,
+      required this.email,
+      required this.password,
+      required this.age});
+
+  final String name;
+  final String email;
+  final String password;
+  final int age;
+
+  factory RegisterUser.nonParams() {
+    return RegisterUser(name: '', email: '', password: '', age: 0);
+  }
+
+  RegisterUser copyWith({
+    int? age,
+    String? name,
+    String? email,
+    String? password,
+  }) =>
+      RegisterUser(
+          age: age ?? this.age,
+          name: name ?? this.name,
+          email: email ?? this.email,
+          password: password ?? this.password);
+
+  Map<String, dynamic> toJson() =>
+      {"name": name, "email": email, "password": password, "age": age};
 }
