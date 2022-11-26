@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todofaruk/auth/auth_service.dart';
+import 'package:todofaruk/auth/register.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -28,7 +29,12 @@ class Login extends StatelessWidget {
                     authService.login();
                   },
                   child: const Text('Login')),
-              TextButton(onPressed: () {}, child: const Text('Register')),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => Register()));
+                  },
+                  child: const Text('Register')),
             ],
           )
         ],
